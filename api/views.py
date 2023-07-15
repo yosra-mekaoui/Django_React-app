@@ -228,3 +228,48 @@ def getClasse(request, id=None):
     serializer = ClasseSerializer(classe)
     return Response(serializer.data, status=status.HTTP_200_OK)
 
+
+# ----------------api Option---------------------------
+@api_view(['GET'])
+def getOptions(request):
+    options = Option.objects.all()
+    serializer = OptionSerializer(options, many=True)
+    return Response(serializer.data, status=status.HTTP_200_OK)
+
+
+@api_view(['POST'])
+def addOption(request):
+    serializer = OptionSerializer(data=request.data)
+    if serializer.is_valid():
+        serializer.save()
+
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
+    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+
+
+@api_view(['PUT', 'PATCH']) # PATCH is used for partial updates
+def updateOption(request, id=None):
+    option = Option.objects.get(id=id)
+
+    serializer = OptionSerializer(instance=option, data=request.data)
+    if serializer.is_valid():
+        serializer.save()
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
+    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+@api_view(['DELETE'])
+def deleteOption(request, id=None):
+    option = Option.objects.get(id=id)
+
+    option.delete()
+    return Response("Option deleted")
+
+
+@api_view(['GET'])
+def getOption(request, id=None):
+    option = Option.objects.get(id=id)
+    serializer = OptionSerializer(option)
+    return Response(serializer.data, status=status.HTTP_200_OK)
