@@ -6,20 +6,18 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 
 
-/*const store = configureStore({
-  reducer: {
-    users: usersReducer,
-  },
-});*/
+
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
 
   <React.StrictMode>
+     
         <BrowserRouter>
     <App />
     </BrowserRouter>
+    
   </React.StrictMode>
 );
 

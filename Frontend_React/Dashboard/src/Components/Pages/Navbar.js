@@ -37,7 +37,7 @@ const logout = () => {
             </div>
             <ul className="navbar-nav  justify-content-end">
               
-              <li className="nav-item d-flex align-items-center">{user && <a  className="nav-link text-body font-weight-bold px-0" onClick={logout} height={15} width={15}>Logout</a>}</li>
+              <li className="nav-item d-flex align-items-center"><a  className="nav-link text-body font-weight-bold px-0"  height={15} width={15}>Logout</a></li>
 
               <li className="nav-item d-xl-none ps-3 d-flex align-items-center">
                 <a href="javascript:;" className="nav-link text-body p-0" id="iconNavbarSidenav">

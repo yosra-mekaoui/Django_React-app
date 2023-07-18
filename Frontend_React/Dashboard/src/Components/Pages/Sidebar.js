@@ -1,5 +1,6 @@
 import React from 'react'
-import { NavLink} from "react-router-dom";
+import { NavLink, Routes, Route } from "react-router-dom";
+import { Link } from "react-router-dom";
 function Sidebar() {
   return (
     <>
@@ -25,14 +26,13 @@ function Sidebar() {
               </NavLink>
             </li>
             <li className="nav-item">
-              <NavLink to="#" className="nav-link text-white " >
+              <NavLink to="" className="nav-link text-white " >
                 <div className="text-white text-center me-2 d-flex align-items-center justify-content-center">
                   <i className="material-icons opacity-10">table_view</i>
                 </div>
-                <span className="nav-link-text ms-1">Users List</span>
+                <span className="nav-link-text ms-1">Users</span>
               </NavLink>
             </li>
-           
             {/* <li className="nav-item">
           <a className="nav-link text-white " href="./pages/billing.html">
             <div className="text-white text-center me-2 d-flex align-items-center justify-content-center">
@@ -69,7 +69,7 @@ function Sidebar() {
               <h6 className="ps-4 ms-2 text-uppercase text-xs text-white font-weight-bolder opacity-8">Account pages</h6>
             </li>
             <li className="nav-item">
-            <NavLink to="/profile" className="nav-link text-white ">
+            <NavLink to="" className="nav-link text-white ">
                 <div className="text-white text-center me-2 d-flex align-items-center justify-content-center">
                   <i className="material-icons opacity-10">person</i>
                 </div>
@@ -78,17 +78,35 @@ function Sidebar() {
 
             </li>
             <li className="nav-item">
-            <NavLink to="/products" className="nav-link text-white ">
+            <NavLink to="" className="nav-link text-white ">
                 <div className="text-white text-center me-2 d-flex align-items-center justify-content-center">
                 <i className="material-icons opacity-10">view_in_ar</i>
                 </div>
-                <span className="nav-link-text ms-1">Product</span>
+                <span className="nav-link-text ms-1">Classe</span>
+                </NavLink>
+
+            </li>
+            <li className="nav-item">
+            <NavLink to="" className="nav-link text-white ">
+                <div className="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                <i className="material-icons opacity-10">view_in_ar</i>
+                </div>
+                <span className="nav-link-text ms-1">Niveau</span>
+                </NavLink>
+
+            </li>
+            <li className="nav-item">
+            <NavLink to="" className="nav-link text-white ">
+                <div className="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                <i className="material-icons opacity-10">view_in_ar</i>
+                </div>
+                <span className="nav-link-text ms-1">Option</span>
                 </NavLink>
 
             </li>
             <li className="nav-item">
 
-              <NavLink to="/signin" className="nav-link text-white ">
+              <NavLink to="" className="nav-link text-white ">
                 <div className="text-white text-center me-2 d-flex align-items-center justify-content-center">
                   <i className="material-icons opacity-10">login</i>
                   <span className="nav-link-text ms-1">Sign In</span>
