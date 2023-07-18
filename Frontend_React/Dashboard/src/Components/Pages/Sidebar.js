@@ -78,7 +78,7 @@ function Sidebar() {
 
             </li>
             <li className="nav-item">
-            <NavLink to="" className="nav-link text-white ">
+            <NavLink to="/classes" className="nav-link text-white ">
                 <div className="text-white text-center me-2 d-flex align-items-center justify-content-center">
                 <i className="material-icons opacity-10">view_in_ar</i>
                 </div>
@@ -96,7 +96,7 @@ function Sidebar() {
 
             </li>
             <li className="nav-item">
-            <NavLink to="" className="nav-link text-white ">
+            <NavLink to="/options" className="nav-link text-white ">
                 <div className="text-white text-center me-2 d-flex align-items-center justify-content-center">
                 <i className="material-icons opacity-10">view_in_ar</i>
                 </div>

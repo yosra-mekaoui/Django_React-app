@@ -3,6 +3,9 @@ import './App.css';
 import React, { useState, useEffect } from "react";
 import { Suspense } from 'react';
 import { Route, Routes } from 'react-router-dom';
+import Options from './Components/Option/Options';
+import Classes from './Components/Classe/Classes';
+
 
 
 
@@ -32,6 +35,8 @@ function App() {
         <Routes>
           <Route path="/" element={<Dashboard />} />
           <Route path="*" element={<Dashboard />} />
+          <Route path="/options" element={<Options/>}/>
+          <Route path="/classes" element={<Classes/>}/>
          
 
 
