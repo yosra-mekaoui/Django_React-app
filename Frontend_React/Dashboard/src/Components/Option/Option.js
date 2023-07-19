@@ -11,7 +11,11 @@ export default function Option (props){
   };
    
 
-   return (  <Col> <Card style={{ width: '18rem' }}>
+   return (  
+    
+   <Col> 
+   
+   <Card style={{ width: '18rem' }}>
    <Card.Body>
    <Card.Title><span style={{ color: 'red' }}>nom: </span>{props.Option.nom}</Card.Title>
      <Card.Title><span style={{ color: 'red' }}>nb : </span>{props.Option.nombre_classes}</Card.Title>

@@ -107,17 +107,19 @@ export default function Options (){
    
    return   (<> 
    <Container fluid="md">
+      <h3>Liste des options:</h3>
+      <button type="button" class="btn btn-outline-dark"onClick={handleOpenModal}>Ajouter une option</button>
+
+      </Container>
+  
+   <Container fluid="md">
+    
    <Row>
    {options.length != 0 ? options.map(e=> { return    <Option key={e.id} Option={e} delete={deleteB} handleEditClick={handleEditClick}/> } ) : <Col><Alert variant="danger"> No Options found</Alert> </Col> }
    </Row>
     </Container>
    
-   {/* Bouton pour ajouter une option */}
-   <div className="d-flex justify-content-end mt-3">
-      <Button variant="primary" onClick={handleOpenModal}>
-        Ajouter une option
-      </Button>
-    </div>
+  
 
       {/* Modal pour les options */}
       <OptionModal

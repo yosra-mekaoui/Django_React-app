@@ -66,7 +66,7 @@ function Sidebar() {
           </a>
         </li> */}
             <li className="nav-item mt-3">
-              <h6 className="ps-4 ms-2 text-uppercase text-xs text-white font-weight-bolder opacity-8">Account pages</h6>
+              <h6 className="ps-4 ms-2 text-uppercase text-xs text-white font-weight-bolder opacity-8"> Pages</h6>
             </li>
             <li className="nav-item">
             <NavLink to="" className="nav-link text-white ">
@@ -101,6 +101,33 @@ function Sidebar() {
                 <i className="material-icons opacity-10">view_in_ar</i>
                 </div>
                 <span className="nav-link-text ms-1">Option</span>
+                </NavLink>
+
+            </li>
+            <li className="nav-item">
+            <NavLink to="" className="nav-link text-white ">
+                <div className="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                <i className="material-icons opacity-10">view_in_ar</i>
+                </div>
+                <span className="nav-link-text ms-1">Competance</span>
+                </NavLink>
+
+            </li>
+            <li className="nav-item">
+            <NavLink to="" className="nav-link text-white ">
+                <div className="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                <i className="material-icons opacity-10">view_in_ar</i>
+                </div>
+                <span className="nav-link-text ms-1">UP</span>
+                </NavLink>
+
+            </li>
+            <li className="nav-item">
+            <NavLink to="" className="nav-link text-white ">
+                <div className="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                <i className="material-icons opacity-10">view_in_ar</i>
+                </div>
+                <span className="nav-link-text ms-1">Affectation</span>
                 </NavLink>
 
             </li>
