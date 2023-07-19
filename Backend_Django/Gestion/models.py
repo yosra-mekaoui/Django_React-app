@@ -1,5 +1,6 @@
 from django.db import models
-from users.models import *
+from users.models import Enseignant,models,Role
+
 # Create your models here.
 #class Un niveau est caractérisé par un nom, nombre de classes.
 class Niveau(models.Model):
