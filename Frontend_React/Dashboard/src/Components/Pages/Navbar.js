@@ -1,21 +1,10 @@
 import React from 'react'
-import { NavLink,Routes ,Route } from "react-router-dom";
-import { Link } from "react-router-dom";
-import  { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 function Navbar() {
-  const [user, setUser] = useState(localStorage.getItem("user"));
   const navigate = useNavigate();
 
-useEffect(() => {
-  setUser(localStorage.getItem("user"));
-}, [user]);
-const logout = () => {
-  localStorage.removeItem("user");
-  
-  navigate('/')
-};
+
   return (
           <main className="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
 

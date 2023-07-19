@@ -27,6 +27,9 @@
 .App-link {
   color: #61dafb;
 }
+.custom-logo {
+  height: 40px; /* Vous pouvez ajuster la hauteur en pixels selon vos besoins */
+}
 
 @keyframes App-logo-spin {
   from {

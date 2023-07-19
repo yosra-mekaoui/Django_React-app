@@ -1,16 +1,17 @@
 import React from 'react';
 
+
 function Footer() {
   return (
     <div className="container my-5">
-    <footer className="text-center text-white" style={{ backgroundColor: '#f1f1f1', position: 'fixed', bottom: 0, left: 0, width: '100%', zIndex: 100 }}>
+      <footer className="text-center text-white" style={{ backgroundColor: '#ffffff', position: 'fixed', bottom: 0, left: 0, width: '100%', zIndex: 100 }}>
         {/* Grid container */}
-        <div className="container pt-4">
+        <div className="container">
           {/* Section: Social media */}
-          <section className="mb-4">
+          <section className="mb">
             {/* Facebook */}
             <a
-              className="btn btn-link btn-floating btn-lg text-dark m-1"
+              className="btn btn-link btn-floating btn-lg m-1 text-danger" // Ajoutez la classe text-danger pour changer la couleur en rouge
               href="#!"
               role="button"
               data-mdb-ripple-color="dark"
@@ -20,7 +21,7 @@ function Footer() {
 
             {/* Twitter */}
             <a
-              className="btn btn-link btn-floating btn-lg text-dark m-1"
+              className="btn btn-link btn-floating btn-lg m-1 text-danger" // Ajoutez la classe text-danger pour changer la couleur en rouge
               href="#!"
               role="button"
               data-mdb-ripple-color="dark"
@@ -30,17 +31,20 @@ function Footer() {
 
             {/* Google */}
             <a
-              className="btn btn-link btn-floating btn-lg text-dark m-1"
+              className="btn btn-link btn-floating btn-lg m-1 text-danger" // Ajoutez la classe text-danger pour changer la couleur en rouge
               href="#!"
               role="button"
               data-mdb-ripple-color="dark"
             >
               <i className="fab fa-google"></i>
             </a>
+            
+{/* Logo */}
+<img src="./assets/img/logo-01.png" className="custom-logo mx-" alt="main_logo" />
 
             {/* Instagram */}
             <a
-              className="btn btn-link btn-floating btn-lg text-dark m-1"
+              className="btn btn-link btn-floating btn-lg m-1 text-danger" // Ajoutez la classe text-danger pour changer la couleur en rouge
               href="#!"
               role="button"
               data-mdb-ripple-color="dark"
@@ -50,7 +54,7 @@ function Footer() {
 
             {/* Linkedin */}
             <a
-              className="btn btn-link btn-floating btn-lg text-dark m-1"
+              className="btn btn-link btn-floating btn-lg m-1 text-danger" // Ajoutez la classe text-danger pour changer la couleur en rouge
               href="#!"
               role="button"
               data-mdb-ripple-color="dark"
@@ -60,7 +64,7 @@ function Footer() {
 
             {/* Github */}
             <a
-              className="btn btn-link btn-floating btn-lg text-dark m-1"
+              className="btn btn-link btn-floating btn-lg m-1 text-danger" // Ajoutez la classe text-danger pour changer la couleur en rouge
               href="#!"
               role="button"
               data-mdb-ripple-color="dark"
@@ -68,16 +72,16 @@ function Footer() {
               <i className="fab fa-github"></i>
             </a>
           </section>
+          <div className="text-center text-dark  " style={{ backgroundColor: '#ffffff' }}>
+          2023 © All Rights Reserved. Created By ESPRIT
+          <a className="text-dark" href="https://mdbootstrap.com/">
+          </a>
+        </div>
           {/* Section: Social media */}
         </div>
         {/* Grid container */}
 
-        {/* Copyright */}
-        <div className="text-center text-dark p-3" style={{ backgroundColor: 'rgba(0, 0, 0, 0.2)' }}>
-        2023 © All Rights Reserved. Created By ESPRIT
-          <a className="text-dark" href="https://mdbootstrap.com/">
-          </a>
-        </div>
+     
         {/* Copyright */}
       </footer>
     </div>
