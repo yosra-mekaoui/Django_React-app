@@ -56,6 +56,9 @@ MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware'
 ]
 
+#AUTH_USER_MODEL 
+AUTH_USER_MODEL = 'users.Enseignant'
+
 ROOT_URLCONF = 'Backend.urls'
 
 TEMPLATES = [

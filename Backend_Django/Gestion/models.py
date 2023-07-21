@@ -42,7 +42,6 @@ class Option(models.Model):
 class Classe(models.Model):
     nom = models.CharField(max_length=20)
     niveau = models.ForeignKey(Niveau, on_delete=models.CASCADE)
-    options = models.ManyToManyField(Option)
 
     def __str__(self):
         return self.nom

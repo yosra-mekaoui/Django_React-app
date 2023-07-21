@@ -2,12 +2,9 @@ from django.contrib import admin
 from .models import Niveau, Option, Classe, Module
 
 class ClasseAdmin(admin.ModelAdmin):
-    list_display = ('nom', 'niveau', 'options_display')
+    list_display = ('nom', 'niveau')
 
-    def options_display(self, obj):
-        options = obj.options.all()
-        return ", ".join([option.nom for option in options])
-    options_display.short_description = 'Options'
+    
 
 class NiveauAdmin(admin.ModelAdmin):
     list_display = ('nom', 'nombre_classes')

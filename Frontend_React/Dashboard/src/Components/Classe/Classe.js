@@ -7,17 +7,18 @@ export default function Classe (props){
    console.log(props.Classe);
  
    
-   
+   const handleEditClick = () => {
+    props.handleEditClick(props.Classe); // Appel à la fonction handleEditClick du composant parent Options
+  };
 
    return (  <Col> <Card style={{ width: '18rem' }}>
    <Card.Body>
-   <Card.Title><span style={{ color: 'red' }}>nom: </span>{props.Classe.nom}</Card.Title>
-     <Card.Title><span style={{ color: 'red' }}>niveau : </span>{props.Classe.niveau}</Card.Title>
-     <Card.Title><span style={{ color: 'red' }}>option : </span>{props.Classe.options}</Card.Title>
-
-     <Link to={"/update/" + props.Classe.id}>
-        <FaEdit className="edit-icon" />
-      </Link>
+   <Card.Title><span style={{ color: 'gray' }}>nom: </span>{props.Classe.nom}</Card.Title>
+     <Card.Title><span style={{ color: 'gray' }}>niveau : </span>{props.Classe.niveau}</Card.Title>
+     <span onClick={handleEditClick}>
+            <FaEdit className="edit-icon" />
+          </span>
+     
 
       <FaTrash
         className="delete-icon"

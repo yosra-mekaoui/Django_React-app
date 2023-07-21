@@ -1,6 +1,8 @@
 import axios from 'axios';
 const url = "http://127.0.0.1:8000/api";
 const addUrl = "http://127.0.0.1:8000/api/options";
+const addUrlC = "http://127.0.0.1:8000/api/classes";
+
 export const getOptions = async (id) => {
     id = id || '';
     return await axios.get(`http://127.0.0.1:8000/api/options/${id}`);
@@ -33,7 +35,7 @@ export const getClasses = async (id) => {
 
 export const addClasse = async (classe) => {
     console.log(classe);  
-    return await axios.post(url+"/add/",classe,{
+    return await axios.post(addUrlC+"/add/",classe,{
         headers: {
           'Content-Type': 'multipart/form-data',
         },
