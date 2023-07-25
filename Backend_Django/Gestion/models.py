@@ -58,3 +58,8 @@ class Module(models.Model):
     responsable_module = models.ForeignKey('users.Enseignant', on_delete=models.CASCADE)
 def __str__(self):
         return self.nom
+#Un UP est caractérisé par un nom
+class UP(models.Model):
+    nom=models.CharField(max_length=120)
+    def __str__(self):
+        return self.nom

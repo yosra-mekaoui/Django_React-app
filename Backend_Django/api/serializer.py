@@ -77,3 +77,9 @@ class OptionSerializer(serializers.ModelSerializer):
                         class Meta:
                             model = Option
                             fields = '__all__'
+#UP
+class UPSerializer(serializers.ModelSerializer):
+                                
+                                    class Meta:
+                                        model = UP
+                                        fields = '__all__'

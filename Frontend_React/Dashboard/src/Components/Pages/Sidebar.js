@@ -26,7 +26,7 @@ function Sidebar() {
               </NavLink>
             </li>
             <li className="nav-item">
-              <NavLink to="" className="nav-link text-white " >
+              <NavLink to="/enseignants" className="nav-link text-white " >
                 <div className="text-white text-center me-2 d-flex align-items-center justify-content-center">
                   <i className="material-icons opacity-10">table_view</i>
                 </div>
@@ -69,7 +69,7 @@ function Sidebar() {
               <h6 className="ps-4 ms-2 text-uppercase text-xs text-white font-weight-bolder opacity-8"> Pages</h6>
             </li>
             <li className="nav-item">
-            <NavLink to="" className="nav-link text-white ">
+            <NavLink to="/profile" className="nav-link text-white ">
                 <div className="text-white text-center me-2 d-flex align-items-center justify-content-center">
                   <i className="material-icons opacity-10">person</i>
                 </div>
@@ -87,7 +87,7 @@ function Sidebar() {
 
             </li>
             <li className="nav-item">
-            <NavLink to="" className="nav-link text-white ">
+            <NavLink to="/niveaux" className="nav-link text-white ">
                 <div className="text-white text-center me-2 d-flex align-items-center justify-content-center">
                 <i className="material-icons opacity-10">view_in_ar</i>
                 </div>
@@ -114,7 +114,7 @@ function Sidebar() {
 
             </li>
             <li className="nav-item">
-            <NavLink to="" className="nav-link text-white ">
+            <NavLink to="/ups" className="nav-link text-white ">
                 <div className="text-white text-center me-2 d-flex align-items-center justify-content-center">
                 <i className="material-icons opacity-10">view_in_ar</i>
                 </div>

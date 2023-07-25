@@ -325,3 +325,48 @@ def getOption(request, id=None):
     option = Option.objects.get(id=id)
     serializer = OptionSerializer(option)
     return Response(serializer.data, status=status.HTTP_200_OK)
+#UP
+@api_view(['GET'])
+def getUPs(request):
+    ups = UP.objects.all()
+    serializer = UPSerializer(ups, many=True)
+    return Response(serializer.data, status=status.HTTP_200_OK)
+
+
+@api_view(['POST'])
+def addUP(request):
+    serializer = UPSerializer(data=request.data)
+    if serializer.is_valid():
+        serializer.save()
+
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
+    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+
+
+@api_view(['PUT', 'PATCH']) # PATCH is used for partial updates
+def updateUP(request, id=None):
+    up = UP.objects.get(id=id)
+
+    serializer = UPSerializer(instance=up, data=request.data)
+    if serializer.is_valid():
+        serializer.save()
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
+    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+
+@api_view(['DELETE'])
+def deleteUP(request, id=None):
+    up = UP.objects.get(id=id)
+
+    up.delete()
+    return Response("UP deleted")
+
+
+@api_view(['GET'])
+def getUP(request, id=None):
+    up = UP.objects.get(id=id)
+    serializer = UPSerializer(up)
+    return Response(serializer.data, status=status.HTTP_200_OK)

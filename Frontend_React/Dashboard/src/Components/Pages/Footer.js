@@ -1,5 +1,5 @@
 import React from 'react';
-
+import '../../App.css';
 
 function Footer() {
   return (
@@ -40,7 +40,7 @@ function Footer() {
             </a>
             
 {/* Logo */}
-<img src="./assets/img/logo-01.png" className="custom-logo mx-" alt="main_logo" />
+<img src="./assets/img/logo-01.png" className="custom-logo small-logo" alt="main_logo" />
 
             {/* Instagram */}
             <a

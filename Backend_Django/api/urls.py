@@ -46,7 +46,13 @@ urlpatterns = [
     path('options/update/<int:id>', updateOption),
     path('options/delete/<int:id>', deleteOption),
     path('options/<int:id>', getOption),
-    
+
+#UP
+    path('ups/', getUPs),
+    path('ups/add/', addUP),
+    path('ups/update/<int:id>', updateUP),
+    path('ups/delete/<int:id>', deleteUP),
+    path('ups/<int:id>', getUP),
 
 
 ]

@@ -73,7 +73,6 @@ class Enseignant(AbstractBaseUser, PermissionsMixin):
     prenom=models.CharField(max_length=120)
     grade=models.CharField(max_length=120)
     roles = models.ManyToManyField(Role, related_name='enseignants')
-    est_enseignant = models.BooleanField(default=False)
     password = models.CharField(max_length=128, default='')
     is_staff = models.BooleanField(
         default=True,

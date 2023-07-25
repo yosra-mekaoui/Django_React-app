@@ -28,7 +28,13 @@
   color: #61dafb;
 }
 .custom-logo {
-  height: 40px; /* Vous pouvez ajuster la hauteur en pixels selon vos besoins */
+  height: 10px; /* Vous pouvez ajuster la hauteur en pixels selon vos besoins */
+  height: auto;
+}
+.small-logo {
+  width: 100px; /* Adjust the width as per your requirement */
+  height: auto; /* This will maintain the aspect ratio */
+  /* You can also set a specific height if needed, e.g., height: 30px; */
 }
 
 @keyframes App-logo-spin {

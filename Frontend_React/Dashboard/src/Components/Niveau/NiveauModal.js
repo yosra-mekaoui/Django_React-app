@@ -1,14 +1,14 @@
 import React from 'react';
 import { Modal, Form, Button } from 'react-bootstrap';
 
-export default function ClasseModal({
+export default function NiveauModal({
   showModal,
   onHide,
   modalTitle,
   formData,
   handleChange,
   handleSubmit,
-  niveauChoices, // Recevoir la liste des choix de niveau depuis le parent
+
 }) {
   return (
     <Modal show={showModal} onHide={onHide}>
@@ -18,6 +18,7 @@ export default function ClasseModal({
       <Modal.Body>
         <Form>
           {/* Ajoutez les champs de formulaire ici */}
+          {/* Par exemple : */}
           <Form.Group controlId="formNom">
             <Form.Label>Nom</Form.Label>
             <Form.Control
@@ -27,30 +28,16 @@ export default function ClasseModal({
               onChange={handleChange}
               placeholder="Entrez le nom"
             />
-          </Form.Group>
-          <Form.Group controlId="formNiveau">
-            <Form.Label>Niveau</Form.Label>
+            </Form.Group>
+          <Form.Group controlId="formNombreClasses">
+            <Form.Label>Nombre de classes</Form.Label>
             <Form.Control
-              type="text"
-              name="niveau"
-              value={formData.niveau}
+              type="number"
+              name="nombre_classes"
+              value={formData.nombre_classes}
               onChange={handleChange}
-              placeholder="Entrez l'id de niveau"
             />
           </Form.Group>
-          {/* <Form.Group controlId="formNiveau">
-            <Form.Label>Niveau</Form.Label>
-            <Form.Control as="select" name="niveau" value={formData.niveau} onChange={handleChange}>
-              <option value="">Choisissez un niveau</option>
-              {niveauChoices.map((choice) => (
-                <option key={choice[0]} value={choice[0]}>
-                {choice[1]}
-              </option>
-            ))}
-            </Form.Control>
-          </Form.Group> */}
-          
-
         </Form>
       </Modal.Body>
       <Modal.Footer>
@@ -58,7 +45,7 @@ export default function ClasseModal({
           Annuler
         </Button>
         <Button variant="primary" onClick={handleSubmit}>
-          {modalTitle === 'Add Classe' ? 'Ajouter' : 'Mettre à jour'}
+          {modalTitle === 'Add Niveau' ? 'Ajouter' : 'Mettre à jour'}
         </Button>
       </Modal.Footer>
     </Modal>
