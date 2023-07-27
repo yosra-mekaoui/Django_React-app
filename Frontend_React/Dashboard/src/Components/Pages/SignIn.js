@@ -65,6 +65,7 @@ function SignIn() {
                             placeholder="Your Email..."
                           />
                         </div>
+                        
                       </div>
                       <div className="d-flex flex-row align-items-center mb-4">
                         <i className="fas fa-lock fa-lg me-3 fa-fw"></i>

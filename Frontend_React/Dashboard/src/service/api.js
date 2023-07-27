@@ -15,6 +15,7 @@ export const registerUser = async (userData) => {
     throw error;
   }
 };
+
 export const loginUser = async (userData) => {
   try {
     const response = await axios.post(`http://127.0.0.1:8000/api/login/`, userData);
