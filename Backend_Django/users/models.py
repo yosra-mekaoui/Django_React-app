@@ -1,7 +1,6 @@
 from django.db import models
 from django.core.exceptions import ValidationError
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
-from django.contrib.auth.hashers import make_password
 
 # Create your models here.
 class Role(models.Model):

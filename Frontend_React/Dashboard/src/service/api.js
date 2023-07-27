@@ -3,6 +3,8 @@ const addUrl = "http://127.0.0.1:8000/api/options";
 const addUrlC = "http://127.0.0.1:8000/api/classes";
 const addUrlUp = "http://127.0.0.1:8000/api/ups";
 const addUrlN = "http://127.0.0.1:8000/api/niveaux";
+const addUrlR = "http://127.0.0.1:8000/api/roles";
+const addUrlM = "http://127.0.0.1:8000/api/modules";
 const apiUrl = 'http://127.0.0.1:8000/api';
 
 export const registerUser = async (userData) => {
@@ -81,16 +83,42 @@ export const editClasse = async (id, classe) => {
 export const deleleClasse = async (id) => {
     return await axios.delete(`http://127.0.0.1:8000/api/classes/delete/${id}`);
 }
+function getCookie(name) {
+  let cookieValue = null;
+  if (document.cookie && document.cookie !== '') {
+    const cookies = document.cookie.split(';');
+    for (let i = 0; i < cookies.length; i++) {
+      const cookie = cookies[i].trim();
+      // Check if the cookie name matches the CSRF cookie name (usually 'csrftoken')
+      if (cookie.substring(0, name.length + 1) === name + '=') {
+        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+        break;
+      }
+    }
+  }
+  return cookieValue;
+}
 //login http://127.0.0.1:8000/api/login
 export const login = async (user) => {
-    console.log(user);  
-    return await axios.post(`http://127.0.0.1:8000/api/login`
-    ,user,{
+  console.log(user);
+  try {
+    const response = await axios.post(
+      `http://127.0.0.1:8000/api/login`,
+      user,
+      {
         headers: {
-          'Content-Type': 'multipart/form-data',
+          'Content-Type': 'application/json', // Use 'application/json' for JSON data
+          'X-CSRFToken': getCookie('csrftoken'), // Include the CSRF token in the header
         },
-      });
-}
+      }
+    );
+
+    return response.data; // Return the response data from the API
+  } catch (error) {
+    // If an error occurs during the API call, throw the error
+    throw error;
+  }
+};
 //User
 export const getEnseignants = async (id) => {
     id = id || '';
@@ -162,3 +190,51 @@ export const editNiveau = async (id, niveau) => {
 export const deleleNiveau = async (id) => {
   return await axios.delete(`http://127.0.0.1:8000/api/niveaux/delete/${id}`);
 }
+//role
+export const getRoles = async (id) => {
+  id = id || '';
+  return await axios.get(`http://127.0.0.1:8000/api/roles/${id}`);
+}
+export const addRole = async (role) => {
+  console.log(role);  
+  return await axios.post(addUrlR+"/add/",role,{
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
+    });
+}
+export const editRole = async (id, role) => {
+  console.log(`${addUrlR}/update/${id}`);
+  return await axios.put(`${addUrlR}/update/${id}`, role, {
+    headers: {
+        'Content-Type': 'multipart/form-data',
+      }});
+}
+export const deleleRole = async (id) => {
+  return await axios.delete(`http://127.0.0.1:8000/api/roles/delete/${id}`);
+}
+//module
+export const getModules = async (id) => {
+  id = id || '';
+  return await axios.get(`http://127.0.0.1:8000/api/modules/${id}`);
+}
+export const addModule = async (module) => {
+  console.log(module);  
+  return await axios.post(addUrlM+"/add/",module,{
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
+    });
+}
+export const editModule = async (id, module) => {
+  console.log(`${addUrlM}/update/${id}`);
+  return await axios.put(`${addUrlM}/update/${id}`, module, {
+    headers: {
+        'Content-Type': 'multipart/form-data',
+      }});
+}
+export const deleleModule = async (id) => {
+  return await axios.delete(`http://127.0.0.1:8000/api/modules/delete/${id}`);
+}
+
+

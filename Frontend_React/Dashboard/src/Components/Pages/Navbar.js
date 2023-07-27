@@ -3,7 +3,10 @@ import { useNavigate } from "react-router-dom";
 
 function Navbar() {
   const navigate = useNavigate();
-
+  function logout(){
+    localStorage.clear();
+    window.location.href='/';
+  }
 
   return (
           <main className="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
@@ -26,7 +29,7 @@ function Navbar() {
             </div>
             <ul className="navbar-nav  justify-content-end">
               
-              <li className="nav-item d-flex align-items-center"><a  className="nav-link text-body font-weight-bold px-0"  height={15} width={15}>Logout</a></li>
+              <li className="nav-item d-flex align-items-center"><a href='#' onClick={logout}  className="nav-link text-body font-weight-bold px-0"  height={15} width={15}>Logout</a></li>
 
               <li className="nav-item d-xl-none ps-3 d-flex align-items-center">
                 <a href="javascript:;" className="nav-link text-body p-0" id="iconNavbarSidenav">

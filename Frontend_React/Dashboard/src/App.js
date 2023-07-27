@@ -7,6 +7,8 @@ import Classes from './Components/Classe/Classes';
 import Niveaux from "./Components/Niveau/Niveaux";
 import SignIn from "./Components/Pages/SignIn";
 import Signup from "./Components/Pages/Signup";
+import Roles from "./Components/Role/Roles";
+import Modules from "./Components/ModuleCompetance/Modules";
 import Enseignants from './Components/Enseignant/Enseignants';
 import Ups from './Components/UP/Ups';
 import Sidebar from './Components/Pages/Sidebar';
@@ -16,31 +18,50 @@ import Profile from "./Components/Pages/Profile";
 
 
 function App() {
+  const user=localStorage.getItem('user');
+
   return (
     <div className='MyApp'>
 
       <Suspense fallback={<div>Loading...</div>}>
                  
-        <Navbar />
-        <Sidebar />
-        <Routes>
-          <Route path="/" element={<Dashboard />} />
-          <Route path="*" element={<Dashboard />} />
-          <Route path="/options" element={<Options/>}/>
-          <Route path="/classes" element={<Classes/>}/>
-          <Route path="/enseignants" element={<Enseignants/>}/>
-          <Route path="/ups" element={<Ups/>}/>
-          <Route path="/niveaux" element={<Niveaux/>}/>
-          <Route path="/signin" element={<SignIn/>}/>
-          <Route path="/signup" element={<Signup/>}/>
-          <Route path="/profile" element={<Profile/>}/>
+       
+          {
+            user ? (
+              <>
+              <Navbar />
+              <Sidebar />
+              <Routes>
+              <Route path="*" element={<Dashboard />} />
+              <Route path="/options" element={<Options/>}/>
+              <Route path="/classes" element={<Classes/>}/>
+              <Route path="/enseignants" element={<Enseignants/>}/>
+              <Route path="/roles" element={<Roles/>}/>
+              <Route path="/ups" element={<Ups/>}/>
+              <Route path="/niveaux" element={<Niveaux/>}/>
+              <Route path="/profile" element={<Profile/>}/>
+              <Route path="/modules" element={<Modules/>}/>
+              </Routes>
+              </>
+
+            ) : (
+            
+              <Routes>
+                              <Route path="/" element={<Dashboard />} />
+
+              <Route path="/signin" element={<SignIn/>}/>
+              <Route path="/signup" element={<Signup/>}/>
+              </Routes>
+
+                )
+          }
+          
+        
 
 
 
 
 
-
-        </Routes>
         <Footer />
       </Suspense>
 

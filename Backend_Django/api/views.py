@@ -4,7 +4,7 @@ from rest_framework.decorators import api_view, parser_classes
 from users.models import *
 from Gestion.models import *
 from .serializer import *
-
+# from rest_framework.authtoken.models import Token
 from django.contrib.auth import get_user_model, login, logout
 from rest_framework.authentication import SessionAuthentication
 from rest_framework.views import APIView
@@ -27,18 +27,51 @@ class UserRegister(APIView):
 
 
 class UserLogin(APIView):
-	permission_classes = (permissions.AllowAny,)
-	authentication_classes = (SessionAuthentication,)
-	##
-	def post(self, request):
-		data = request.data
-		assert validate_email(data)
-		assert validate_password(data)
-		serializer = UserLoginSerializer(data=data)
-		if serializer.is_valid(raise_exception=True):
-			user = serializer.check_user(data)
-			login(request, user)
-			return Response(serializer.data, status=status.HTTP_200_OK)
+    permission_classes = (permissions.AllowAny,)
+    authentication_classes = (SessionAuthentication,)
+    
+    def post(self, request):
+        data = request.data
+        assert validate_email(data)
+        assert validate_password(data)
+        serializer = UserLoginSerializer(data=data)
+        
+        try:
+            if serializer.is_valid(raise_exception=True):
+                user = serializer.check_user(data)
+                login(request, user)
+            
+                # Get additional user information (modify this part based on your user model)
+                user_info = {
+                    "username": user.username,
+                    "email": user.email,
+                    "password": user.password,
+                     "roles": list(user.roles.values_list('nom', flat=True)),  # Convert roles to a list of role names
+                    "nom":  user.nom,
+                    "prenom": user.prenom,
+                    "grade": user.grade,
+
+
+
+                    # Add other fields you want to include in the response
+                }
+            
+                # Merge the additional user information with the serializer's data
+                response_data = {
+                    **serializer.data,
+                    "user_info": user_info,
+                    # "token": token.key  # Include the token in the response if desired
+                }
+            
+                return Response(response_data, status=status.HTTP_200_OK)
+        except Enseignant.DoesNotExist:
+            # Handle the exception when the user is not found
+            error_message = {"error": "User not found."}
+            return Response(error_message, status=status.HTTP_404_NOT_FOUND)
+        except Exception as e:
+            # Handle other exceptions (e.g., serializer validation error, server error)
+            error_message = {"error": str(e)}
+            return Response(error_message, status=status.HTTP_400_BAD_REQUEST)
 
 
 class UserLogout(APIView):

@@ -1,6 +1,9 @@
 import React from 'react';
 
 const Profile = () => {
+  const user=JSON.parse(localStorage.getItem('user'));
+
+  
   return (
     <section className="vh-100" style={{ backgroundColor: '#f4f5f7' }}>
       <div className="container py-5 h-100">
@@ -12,7 +15,7 @@ const Profile = () => {
                   style={{ borderTopLeftRadius: '.5rem', borderBottomLeftRadius: '.5rem' }}>
                   <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava1-bg.webp"
                     alt="Avatar" className="img-fluid my-5" style={{ width: '80px' }} />
-                  <h5>Marie Horwitz</h5>
+                  <h5>{user.nom} {user.prenom}</h5>
                   <p>Web Designer</p>
                   <i className="far fa-edit mb-5"></i>
                 </div>
@@ -23,23 +26,25 @@ const Profile = () => {
                     <div className="row pt-1">
                       <div className="col-6 mb-3">
                         <h6>Email</h6>
-                        <p className="text-muted">info@example.com</p>
+                        <p className="text-muted">{user.email}</p>
                       </div>
                       <div className="col-6 mb-3">
-                        <h6>Phone</h6>
-                        <p className="text-muted">123 456 789</p>
+                        <h6>Grade</h6>
+                        <p className="text-muted">{user.grade}</p>
                       </div>
                     </div>
-                    <h6>Projects</h6>
+                    <h6>Role</h6>
+                    <p className="text-muted">{user.roles}</p>
+
                     <hr className="mt-0 mb-4" />
                     <div className="row pt-1">
                       <div className="col-6 mb-3">
-                        <h6>Recent</h6>
-                        <p className="text-muted">Lorem ipsum</p>
+                        <h6>Username</h6>
+                        <p className="text-muted">{user.username}</p>
                       </div>
                       <div className="col-6 mb-3">
-                        <h6>Most Viewed</h6>
-                        <p className="text-muted">Dolor sit amet</p>
+                        <h6>Password</h6>
+                        <p className="text-muted">{user.password}</p>
                       </div>
                     </div>
                     

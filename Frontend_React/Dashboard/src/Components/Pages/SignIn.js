@@ -1,16 +1,13 @@
 
 import React, { useEffect, useState } from "react";
-import axios from 'axios';
 
-import { useNavigate } from "react-router-dom";
-
-import { NavLink, Routes, Route } from "react-router-dom";
 
 import {login} from '../../service/api'
 
 function SignIn() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+ 
+  const [error,setError]=useState(null);
+
   
   const [formData, setFormData] = useState({
     email: '',
@@ -19,21 +16,27 @@ function SignIn() {
   });
 
   const handleChange = (e) => {
+    console.log("here")
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
 
+  async function handleSubmit(event){
+      event.preventDefault(); // Prevent the default form submission behavior
+  
+      try {
+        const res = await login(formData);
+        localStorage.setItem('user', JSON.stringify(res.user_info));
+        window.location.href='/'
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    axios.post('http://127.0.0.1:8000/api/login/', { email, password })
-      .then((response) => {
-        // Traitement de la réponse ici (par exemple, mise à jour de l'état d'authentification dans votre App.js)
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  };
+      console.log(res)
+      } catch (error) {
+        // Handle the axios error here (e.g., network error, server error)
+        setError(error.response.data.error);
+      }
+    
+  
+  }
   
     return (
       <section className="vh-100" style={{ backgroundColor: '#eee' }}>
@@ -44,10 +47,9 @@ function SignIn() {
               <div className="card-body p-md-5">
                 <div className="row justify-content-center">
                   <div className="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
-                    <p className="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Sign up</p>
-                    <form className="mx-1 mx-md-4" onSubmit={handleSubmit}>
+                    <p className="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Sign in</p>
+                    <form className="mx-1 mx-md-4" >
                       <div className="d-flex flex-row align-items-center mb-4">
-                        <i className="fas fa-user fa-lg me-3 fa-fw"></i>
                      
                       </div>
                       <div className="d-flex flex-row align-items-center mb-4">
@@ -80,8 +82,14 @@ function SignIn() {
                       </div>
                       
                       <div className="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
-                      <button type="submit" className="btn btn-danger btn-lg">Signin</button>
+                      <button type="buttpn" className="btn btn-danger btn-lg" onClick={handleSubmit}>Signin</button>
                       </div>
+                      {error&&
+                      <div className="alert alert-danger" role="alert">
+                      {error}
+                      </div>
+
+                      }
                     </form>
                   </div>
                   <div className="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2">

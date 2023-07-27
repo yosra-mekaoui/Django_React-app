@@ -18,7 +18,6 @@ export default function Classes() {
     niveau: "",
   });
 
-  //const [optionChoices, setOptionChoices] = useState([]);
    const [selectedClasse, setSelectedClasse] = useState(null);
 
 

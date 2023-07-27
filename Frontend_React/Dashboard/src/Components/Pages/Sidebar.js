@@ -2,6 +2,13 @@ import React from 'react'
 import { NavLink, Routes, Route } from "react-router-dom";
 import { Link } from "react-router-dom";
 function Sidebar() {
+  const user=JSON.parse(localStorage.getItem('user'));
+  console.log(user)
+//    const ListOfnames = ['administrateur', 'coordinateur_unité_pédagogique','enseignant','Coordinateu_des_projets','responsable_option','responsable_module']
+  function verif(roles)
+  { 
+    return roles.some(role => user.roles.includes(role));
+  }
   return (
     <>
 
@@ -16,58 +23,33 @@ function Sidebar() {
         <hr className="horizontal light mt-0 mb-2" />
         <div className="collapse navbar-collapse  w-auto  max-height-vh-100" id="sidenav-collapse-main">
           <ul className="navbar-nav">
-            <li className="nav-item">
-              <NavLink to="/" className="nav-link text-white ">
-                <div className="text-white text-center me-2 d-flex align-items-center justify-content-center">
-                  <i className="material-icons opacity-10">dashboard</i>
-                  <span className="nav-link-text ms-1">Dashboard</span>
+          {verif(['administrateur'])&&
 
-                </div>
-              </NavLink>
-            </li>
             <li className="nav-item">
-              <NavLink to="/enseignants" className="nav-link text-white " >
+                            <NavLink to="/enseignants" className="nav-link text-white " >
                 <div className="text-white text-center me-2 d-flex align-items-center justify-content-center">
                   <i className="material-icons opacity-10">table_view</i>
                 </div>
                 <span className="nav-link-text ms-1">Users</span>
               </NavLink>
             </li>
-            {/* <li className="nav-item">
-          <a className="nav-link text-white " href="./pages/billing.html">
-            <div className="text-white text-center me-2 d-flex align-items-center justify-content-center">
-              <i className="material-icons opacity-10">receipt_long</i>
-            </div>
-            <span className="nav-link-text ms-1">Billing</span>
-          </a>
-        </li>
-        <li className="nav-item">
-          <a className="nav-link text-white " href="./pages/virtual-reality.html">
-            <div className="text-white text-center me-2 d-flex align-items-center justify-content-center">
-              <i className="material-icons opacity-10">view_in_ar</i>
-            </div>
-            <span className="nav-link-text ms-1">Virtual Reality</span>
-          </a>
-        </li>
-        <li className="nav-item">
-          <a className="nav-link text-white " href="./pages/rtl.html">
-            <div className="text-white text-center me-2 d-flex align-items-center justify-content-center">
-              <i className="material-icons opacity-10">format_textdirection_r_to_l</i>
-            </div>
-            <span className="nav-link-text ms-1">RTL</span>
-          </a>
-        </li>
-        <li className="nav-item">
-          <a className="nav-link text-white " href="./pages/notifications.html">
-            <div className="text-white text-center me-2 d-flex align-items-center justify-content-center">
-              <i className="material-icons opacity-10">notifications</i>
-            </div>
-            <span className="nav-link-text ms-1">Notifications</span>
-          </a>
-        </li> */}
+              }
+          {verif(['administrateur'])&&
+
+            <li className="nav-item">
+
+              <NavLink to="/roles" className="nav-link text-white " >
+                <div className="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                  <i className="material-icons opacity-10">table_view</i>
+                </div>
+                <span className="nav-link-text ms-1">Roles</span>
+              </NavLink>
+            </li>
+            }
             <li className="nav-item mt-3">
               <h6 className="ps-4 ms-2 text-uppercase text-xs text-white font-weight-bolder opacity-8"> Pages</h6>
             </li>
+            
             <li className="nav-item">
             <NavLink to="/profile" className="nav-link text-white ">
                 <div className="text-white text-center me-2 d-flex align-items-center justify-content-center">
@@ -77,6 +59,8 @@ function Sidebar() {
                 </NavLink>
 
             </li>
+            {verif(['administrateur'])&&
+
             <li className="nav-item">
             <NavLink to="/classes" className="nav-link text-white ">
                 <div className="text-white text-center me-2 d-flex align-items-center justify-content-center">
@@ -86,6 +70,9 @@ function Sidebar() {
                 </NavLink>
 
             </li>
+}
+            {verif(['administrateur'])&&
+
             <li className="nav-item">
             <NavLink to="/niveaux" className="nav-link text-white ">
                 <div className="text-white text-center me-2 d-flex align-items-center justify-content-center">
@@ -95,6 +82,9 @@ function Sidebar() {
                 </NavLink>
 
             </li>
+}
+            {verif(['administrateur'])&&
+
             <li className="nav-item">
             <NavLink to="/options" className="nav-link text-white ">
                 <div className="text-white text-center me-2 d-flex align-items-center justify-content-center">
@@ -102,18 +92,12 @@ function Sidebar() {
                 </div>
                 <span className="nav-link-text ms-1">Option</span>
                 </NavLink>
+                </li>
 
-            </li>
-            <li className="nav-item">
-            <NavLink to="" className="nav-link text-white ">
-                <div className="text-white text-center me-2 d-flex align-items-center justify-content-center">
-                <i className="material-icons opacity-10">view_in_ar</i>
-                </div>
-                <span className="nav-link-text ms-1">Competance</span>
-                </NavLink>
+            }
+                        {verif(['administrateur'])&&
 
-            </li>
-            <li className="nav-item">
+                <li className="nav-item">
             <NavLink to="/ups" className="nav-link text-white ">
                 <div className="text-white text-center me-2 d-flex align-items-center justify-content-center">
                 <i className="material-icons opacity-10">view_in_ar</i>
@@ -122,31 +106,35 @@ function Sidebar() {
                 </NavLink>
 
             </li>
+}
+            {verif(['administrateur'])&&
+
             <li className="nav-item">
+            <NavLink to="/modules" className="nav-link text-white ">
+                <div className="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                <i className="material-icons opacity-10">view_in_ar</i>
+                </div>
+                <span className="nav-link-text ms-1">Competance</span>
+                </NavLink>
+
+            </li>
+            }
+           
+           {verif(['administrateur','enseignant'])&&
+            <li className="nav-item">
+
             <NavLink to="" className="nav-link text-white ">
                 <div className="text-white text-center me-2 d-flex align-items-center justify-content-center">
                 <i className="material-icons opacity-10">view_in_ar</i>
                 </div>
                 <span className="nav-link-text ms-1">Affectation</span>
                 </NavLink>
+                </li>
 
-            </li>
-            <li className="nav-item">
+          }
+           
 
-              <NavLink to="" className="nav-link text-white ">
-                <div className="text-white text-center me-2 d-flex align-items-center justify-content-center">
-                  <i className="material-icons opacity-10">login</i>
-                  <span className="nav-link-text ms-1">Sign In</span>
-
-                </div>
-              </NavLink>
-            </li>
-
-
-            <li className="nav-item">
-
-             
-            </li>
+          
             {/* <li className="nav-item">
           <a className="nav-link text-white " href="./pages/sign-up.html">
             <div className="text-white text-center me-2 d-flex align-items-center justify-content-center">
