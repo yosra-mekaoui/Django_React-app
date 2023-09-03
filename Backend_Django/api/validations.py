@@ -1,11 +1,15 @@
 from django.core.exceptions import ValidationError
 from django.contrib.auth import get_user_model
 UserModel = get_user_model()
+from django.contrib.auth.hashers import make_password
+
 
 def custom_validation(data):
     email = data['email'].strip()
     username = data['username'].strip()
     password = data['password'].strip()
+    hashed_password = make_password(password)
+    
     
 
     ##
@@ -17,6 +21,8 @@ def custom_validation(data):
     ##
     if not username:
         raise ValidationError('choose another username')
+    data['password'] = hashed_password
+
     return data
 
 

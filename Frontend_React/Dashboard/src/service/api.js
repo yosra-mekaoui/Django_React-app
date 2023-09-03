@@ -128,9 +128,9 @@ export const getEnseignants = async (id) => {
 
 export const addEnseignant = async (enseignant) => {
   console.log(enseignant);  
-  return await axios.post(apiUrl+"/add/",enseignant,{
+  return await axios.post(`http://127.0.0.1:8000/api/register`,enseignant,{
       headers: {
-        'Content-Type': 'multipart/form-data',
+        'Content-Type': 'application/json',
       },
     });
 }
@@ -237,5 +237,8 @@ export const editModule = async (id, module) => {
 export const deleleModule = async (id) => {
   return await axios.delete(`http://127.0.0.1:8000/api/modules/delete/${id}`);
 }
+export const editEnseignantChargeHoraire=async(id,chargeHoraire)=>{
+  return await axios.put(`http://127.0.0.1:8000/api/chargehoraire/update/${id}/${chargeHoraire}`);
 
+}
 

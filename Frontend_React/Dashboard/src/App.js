@@ -15,7 +15,7 @@ import Sidebar from './Components/Pages/Sidebar';
 import Footer from './Components/Pages/Footer';
 import Navbar from './Components/Pages/Navbar';
 import Profile from "./Components/Pages/Profile";
-
+import Affectation from "./Components/Pages/Affectation";
 
 function App() {
   const user=localStorage.getItem('user');
@@ -41,6 +41,8 @@ function App() {
               <Route path="/niveaux" element={<Niveaux/>}/>
               <Route path="/profile" element={<Profile/>}/>
               <Route path="/modules" element={<Modules/>}/>
+              <Route path="/affectation" element={<Affectation/>}/>
+
               </Routes>
               </>
 

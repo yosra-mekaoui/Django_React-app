@@ -38,6 +38,7 @@ export default function ClasseModal({
               placeholder="Entrez l'id de niveau"
             />
           </Form.Group>
+          
           {/* <Form.Group controlId="formNiveau">
             <Form.Label>Niveau</Form.Label>
             <Form.Control as="select" name="niveau" value={formData.niveau} onChange={handleChange}>

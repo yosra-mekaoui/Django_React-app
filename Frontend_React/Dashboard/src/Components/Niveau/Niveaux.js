@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import { Button } from 'react-bootstrap';
 import Alert from 'react-bootstrap/Alert';
-import { getNiveaux ,deleleNiveau,addNiveau,editNiveau} from "../../service/api"
+import { getNiveaux ,deleleNiveau,addNiveau,editNiveau, addClasse} from "../../service/api"
 import Niveau from "./Niveau";
 import NiveauModal from './NiveauModal';
 import Container from 'react-bootstrap/Container';
@@ -88,7 +88,16 @@ export default function Niveaux (){
               ...formData,
               nombre_classes: parseInt(formData.nombre_classes, 10),
             };
-            await addNiveau(formDataWithIntClasses);
+            const n=await addNiveau(formDataWithIntClasses);
+            const niveauId=n.data.id
+
+            
+            const nombreDeClasse=parseInt(formData.nombre_classes, 10)
+            for(let i=1; i<=nombreDeClasse;i++){
+              await addClasse(
+                { nom: `${formData.nom}${i}`, niveau:niveauId  }
+              )
+            }
           } else if (modalTitle === 'Edit Niveau') {
             const formDataWithIntClasses = {
               ...formData,

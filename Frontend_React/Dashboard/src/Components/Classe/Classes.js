@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Alert from "react-bootstrap/Alert";
-import { getClasses, deleleClasse, addClasse, editClasse } from "../../service/api";
+import { getClasses, deleleClasse, addClasse, editClasse, getNiveaux } from "../../service/api";
 import Classe from "./Classe";
 import ClasseModal from "./ClasseModal";
 import Container from "react-bootstrap/Container";
@@ -10,6 +10,7 @@ import Col from "react-bootstrap/Col";
 
 export default function Classes() {
   const [classes, setClasses] = useState([]);
+  const [niveaux,setNiveaux]=useState([]);
   const [shouldRefetch, setShouldRefetch] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [modalTitle, setModalTitle] = useState("");
@@ -17,8 +18,8 @@ export default function Classes() {
     nom: "",
     niveau: "",
   });
-
    const [selectedClasse, setSelectedClasse] = useState(null);
+   const [selectedNiveau,setSelectedNiveau]=useState(null);
 
 
   // const niveauChoices = [
@@ -30,20 +31,31 @@ export default function Classes() {
   //   ['5ème', 6],
 
   // ];
+  const fetchNiveaux=()=>{
+    getNiveaux().then((response)=>{setNiveaux(response.data)
+    setSelectedNiveau(response.data[0])})
 
+  }
   const fetchClasses = () => {
-    console.log("test fetchs");
-    getClasses()
+    if(selectedNiveau){
+      getClasses()
       .then((response) => {
         console.log(response.data);
-        setClasses(response.data);
+        setClasses(response.data.filter((classe)=>classe.niveau===selectedNiveau.id));
       })
       .catch((error) => console.log(error));
+    }
+    
   };
 
   useEffect(() => {
-    fetchClasses();
+    fetchNiveaux();
+    
   }, [shouldRefetch]);
+  useEffect(()=>{
+    fetchClasses();
+  },[selectedNiveau])
+  
 
   const deleteB = async (id) => {
     const result = window.confirm("Are you sure you want to delete?");
@@ -118,9 +130,20 @@ export default function Classes() {
       <button type="button" className="btn btn-outline-dark mt-2 mb-4" onClick={handleOpenModal}>
         Ajouter une classe
       </button>
+      <Row>
+        {niveaux&&
+        niveaux.map((n)=>
+        <Col key={n.id} lg={3}>
+           <button type="button" className="btn btn-outline-dark mt-2 mb-4" onClick={(e)=>setSelectedNiveau(n)}>
+              {n.nom}
+              </button>
+            </Col>
+          )}
+      </Row>
     </Container>
 
     <Container fluid="md">
+      
       <Row>
         {classes.length !== 0 ? (
           classes.map((e) => (

@@ -18,7 +18,7 @@ export default function Role (props){
    <Card style={{ width: '18rem' }}>
    <Card.Body>
    <Card.Title><span style={{ color: 'gray' }}>nom: </span>{props.Role.nom}</Card.Title>
-     <Card.Title><span style={{ color: 'gray' }}>nb : </span>{props.Role.description}</Card.Title>
+     <Card.Title><span style={{ color: 'gray' }}>disc : </span>{props.Role.description}</Card.Title>
      <Card.Title><span style={{ color: 'gray' }}>nb : </span>{props.Role.charge_horaire}</Card.Title>
 
      <span onClick={handleEditClick}>

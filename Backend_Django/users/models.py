@@ -77,7 +77,7 @@ class Enseignant(AbstractBaseUser, PermissionsMixin):
         default=True,
         help_text="Designates whether the user can log into the admin site.",
     )
-
+    charge_horaire = models.IntegerField(null=True, default=None)
 
 
     USERNAME_FIELD = 'email'

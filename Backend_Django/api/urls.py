@@ -12,6 +12,7 @@ urlpatterns = [
     path('', getEnseignants),
     path('add/', addEnseignant),
     path('update/<int:id>', updateEnseignant),
+    path('chargehoraire/update/<int:id>/<int:charge>',update_charge),
     path('delete/<int:id>', deleteEnseignant),
     path('<int:id>', getEnseignant),
 #Role

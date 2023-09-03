@@ -9,8 +9,12 @@ export default function EnseignantModal({
   handleChange,
   handleSubmit,
   nomChoices, // Recevoir la liste des choix de nom depuis le parent
-
+  roles,
+  selectARole,
+  removeSelectedRoles
 }) {
+  console.log(roles)
+ 
   return (
     <Modal show={showModal} onHide={onHide}>
       <Modal.Header closeButton>
@@ -84,14 +88,32 @@ export default function EnseignantModal({
         <Form.Group controlId="formRole">
         <Form.Label>Role</Form.Label>
         <Form.Control
-              type="text"
-              name="roles"
-              value={formData.roles}
-              onChange={handleChange}
-              placeholder="Entrez le role"
-            />
+    as="select"
+    name="role"
+    onChange={selectARole}  // Change to the appropriate name that corresponds to your form data
+  >
+    <option value="">Select a role</option>  // Default option
+    {roles.map((role, index) => (
+      <option key={index} value={role.id}>
+        {role.nom}
+      </option>
+    ))}
+  </Form.Control>
+        
         </Form.Group>
-    
+        <Form.Group >
+        <Form.Label>Selected Roles</Form.Label>
+        </Form.Group>
+        {formData.roles.map((roleID) => (
+    <Form.Group >
+    <Form.Label key={roleID}>{roles.find((r) => r.id === Number(roleID)).nom}
+   
+
+</Form.Label> 
+<Button variant="outline-danger ms-2 " size='xs' onClick={()=>removeSelectedRoles(roleID)}>Delete </Button>{' '}
+    </Form.Group>
+
+))}
 
 
         </Form>

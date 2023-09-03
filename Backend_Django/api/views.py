@@ -15,15 +15,15 @@ from .validations import custom_validation, validate_email, validate_password
 
 
 class UserRegister(APIView):
-	permission_classes = (permissions.AllowAny,)
-	def post(self, request):
-		clean_data = custom_validation(request.data)
-		serializer = UserRegisterSerializer(data=clean_data)
-		if serializer.is_valid(raise_exception=True):
-			user = serializer.create(clean_data)
-			if user:
-				return Response(serializer.data, status=status.HTTP_201_CREATED)
-		return Response(status=status.HTTP_400_BAD_REQUEST)
+    permission_classes = (permissions.AllowAny,)
+    def post(self, request):
+        clean_data = custom_validation(request.data)
+        serializer = EnseignantSerializer(data=clean_data)
+        if serializer.is_valid(raise_exception=True):
+            user = serializer.save()
+            if user:
+                return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(status=status.HTTP_400_BAD_REQUEST)
 
 
 class UserLogin(APIView):
@@ -118,6 +118,22 @@ def updateEnseignant(request, id=None):
         serializer.save()
         return Response(serializer.data, status=status.HTTP_201_CREATED)
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+@api_view(['PUT'])
+def update_charge(request, id=None, charge=None):
+    try:
+        enseignant = Enseignant.objects.get(id=id)
+        enseignant.charge_horaire = charge  # Set the new charge_horaire value
+
+        # No need to use request.data for this specific update
+        enseignant.save()
+
+        # Optionally, you can serialize the updated object and return it
+        serializer = EnseignantSerializer(instance=enseignant)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+    except Enseignant.DoesNotExist:
+        return Response({"error": "Enseignant not found"}, status=status.HTTP_404_NOT_FOUND)
+
 
 
 @api_view(['DELETE'])
@@ -403,3 +419,5 @@ def getUP(request, id=None):
     up = UP.objects.get(id=id)
     serializer = UPSerializer(up)
     return Response(serializer.data, status=status.HTTP_200_OK)
+
+
